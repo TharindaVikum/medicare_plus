@@ -1,0 +1,21 @@
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# PHP and IDE files
+*.log
+*.cache
+
+# Database files
+*.ibd
+*.frm
+*.opt
+
+# Uploads and temporary files
+uploads/
+
+# Windows thumbnail cache
+ehthumbs.db
+
+# VS Code
+.vscode/

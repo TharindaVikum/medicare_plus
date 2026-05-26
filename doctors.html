@@ -1,0 +1,1433 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctors - Medicare Plus</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Text&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Tinos&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Yrsa:ital,wght@0,300..700;1,300..700&display=swap"
+        rel="stylesheet">
+    <style>
+        /* --- GENERAL RESET --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* --- HEADER & NAV --- */
+        header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 25px 70px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+            font-size: 26px;
+            font-weight: 600;
+            color: #fff;
+            font-family: "DM Serif Text", serif;
+        }
+
+        .logo-text {
+            font-size: 26px;
+            font-weight: 600;
+            color: #fff;
+            font-family: "DM Serif Text", serif;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 500;
+            transition: 0.3s;
+            font-family: "Tinos", serif;
+            font-size: 19px;
+        }
+
+        /* Login Button */
+        .login-btn {
+            padding: 8px 18px;
+            background: #23a5e6b3;
+            color: #ffffff;
+            border-radius: 25px;
+            font-weight: 100;
+            text-decoration: none;
+            transition: .3s;
+            font-family: "Tinos", serif;
+            font-size: 19px;
+        }
+
+        .login-btn:hover {
+            background: #c8f6ff;
+        }
+
+        .welcome-section {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            /* moves content downward */
+            align-items: flex-start;
+            text-align: left;
+
+            background: linear-gradient(to right, rgba(127, 205, 205, 0.747), rgba(77, 125, 125, 0.193)),
+                url('doctors.jpg') center/cover no-repeat;
+
+            color: #fff;
+            padding-left: 80px;
+            padding-right: 20px;
+            padding-bottom: 120px;
+            /* controls distance from bottom */
+        }
+
+
+        .welcome-section h2 {
+            font-size: 56px;
+            margin-bottom: 12px;
+            font-family: "Tinos", serif;
+            font-weight: 700;
+            color: rgb(34, 73, 89);
+        }
+
+        .welcome-section h1 {
+            font-size: 20px;
+            font-family: "Tinos", serif;
+            font-weight: 700;
+        }
+
+
+        /* -----------------------------------------------------
+    📱 MOBILE RESPONSIVE SECTION  (max-width: 768px)
+------------------------------------------------------ */
+        @media (max-width: 768px) {
+
+            /* NAVIGATION STACKS */
+            header {
+                padding: 20px 25px;
+            }
+
+            nav ul {
+                display: none;
+                /* hide menu for now */
+            }
+
+            .login-btn {
+                padding: 6px 14px;
+                font-size: 14px;
+            }
+
+            .logo-text {
+                font-size: 22px;
+            }
+
+            /* WELCOME AREA */
+            .welcome-section {
+                padding-left: 25px;
+                padding-right: 25px;
+                background-position: center;
+                align-items: center;
+                /* center text on mobile */
+                text-align: center;
+            }
+
+            .welcome-section h2 {
+                font-size: 1.8rem;
+            }
+
+            .welcome-section h1 {
+                font-size: 3.2rem;
+
+            }
+
+        }
+
+        .hero-btn {
+            background-color: #fff;
+            color: #008080;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            font-family: "DM Serif Text", serif;
+            transition: 0.3s;
+            text-decoration: none;
+            text-align: center;
+            display: inline-block;
+            /* prevents stretching */
+            margin-top: 20px;
+            /* spacing under the paragraph */
+            align-items: right;
+            /* aligns button to the left */
+            width: 210px;
+        }
+
+
+
+        /* ---------------------------------------------
+    📱 EXTRA SMALL MOBILE (max-width: 480px)
+---------------------------------------------- */
+        @media (max-width: 480px) {
+
+            .welcome-section h2 {
+                font-size: 1.5rem;
+            }
+
+            .welcome-section h1 {
+                font-size: 1.8rem;
+            }
+
+            .login-btn {
+                padding: 5px 12px;
+                font-size: 13px;
+            }
+
+            .logo-text {
+                font-size: 20px;
+            }
+        }
+
+        /* FADE-IN ANIMATION */
+        .fade-element {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+            /*welcome section*/
+        }
+
+        /* When active */
+        .fade-element.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /*the doctor displaying*/
+        /* Verse Section */
+        .dept-verse {
+            text-align: center;
+            font-size: 26px;
+            font-family: "Tinos", serif;
+            margin-top: 60px;
+            margin-bottom: 40px;
+            line-height: 1.5;
+            color: #1a4a57;
+        }
+
+        /* Department Title */
+        .dept-title h2 {
+            text-align: center;
+            font-size: 40px;
+            color: #008080;
+            font-family: "DM Serif Text", serif;
+            margin-bottom: 40px;
+        }
+
+        /* GENERAL SECTION */
+        .doctor-section {
+            width: 100%;
+            padding: 50px 0;
+            text-align: center;
+        }
+
+        .verse p {
+            font-size: 22px;
+            font-style: italic;
+            color: #333;
+            margin: 0;
+        }
+
+        .dept-title {
+            font-size: 35px;
+            font-weight: bold;
+            color: #008080;
+            margin-top: 20px;
+        }
+
+
+        .doctors-section {
+            display: flex;
+            flex-direction: column;
+            padding: 50px 10%;
+            background: #fff;
+        }
+
+        /* Intro section */
+        .intro {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+
+        .intro-text {
+            max-width: 60%;
+            opacity: 0;
+            transform: translateX(-50px);
+            /* fade in from left */
+            transition: all 1s ease;
+        }
+
+        .intro-text.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .intro-text h2 {
+            margin: 0 0 10px 0;
+            font-size: 32px;
+            color: #008080;
+        }
+
+        .intro-text p {
+            margin: 0;
+            font-size: 18px;
+            color: #555;
+        }
+
+        .intro-button {
+            padding: 12px 25px;
+            font-size: 16px;
+            font-family: "Tinos", serif;
+            background: #008080;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            opacity: 0;
+            text-decoration: none;
+            transform: translateX(-50px);
+            /* fade in from left */
+            transition: all 1s ease;
+        }
+
+        .intro-button.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Cards grid */
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            text-align: center;
+            padding-bottom: 20px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s ease;
+        }
+
+        .card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+        }
+
+        .card h3 {
+            margin: 10px 0 5px;
+            color: #008080;
+        }
+
+        .card p {
+            margin: 2px 0;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .card .card-button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-family: "Tinos", serif;
+            text-decoration: none;
+            background: #008080;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .rating {
+            color: #FFD700;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .intro {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .intro-text {
+                max-width: 100%;
+                margin-bottom: 20px;
+            }
+        }
+
+                .footer {
+            background: #0d1b2a;
+            color: #ffffff;
+            padding: 50px 0 20px;
+            margin-top: 50px;
+        }
+
+        .footer-container {
+            width: 85%;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-section h2,
+        .footer-section h3 {
+            margin-bottom: 15px;
+            font-weight: 600;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .footer-section p {
+            line-height: 1.6;
+            color: #e0e0e0;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 8px;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .footer-section ul li a {
+            color: #e0e0e0;
+            text-decoration: none;
+            transition: 0.3s;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .footer-section ul li a:hover {
+            color: #00a8e8;
+        }
+
+        .social-icons a {
+            display: inline-block;
+            margin-right: 10px;
+            color: white;
+            font-size: 20px;
+            transition: 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: #00a8e8;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #33415c;
+            margin-top: 30px;
+        }
+
+        .footer-bottom p {
+            font-size: 14px;
+            color: #cfd6e1;
+        }
+    </style>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <header>
+        <div class="logo-text">Medicare Plus</div>
+
+        <div class="nav-right">
+            <nav>
+                <ul>
+                    <li><a href="medicare_homepage.php">Home</a></li>
+                    <li><a href="aboutus.html">About Us</a></li>
+                    <li><a href="department.html">Departments</a></li>
+                    <li><a href="doctors.html">Doctors</a></li>
+                    <li><a href="contactus.html">Contact Us</a></li>
+                </ul>
+            </nav>
+
+            <a href="login.php" target="_blank" class="login-btn">Login</a>
+        </div>
+    </header>
+
+
+    <!-- Welcome Section -->
+    <section class="welcome-section">
+        <h2 class="fade-element">Committed to Healing, <br> Driven by Compassion</h2>
+        <h1 class="fade-element">Discover the doctors whose skills, empathy, and dedication shape the
+            healthcare experience at Medicare Plus.</h1>
+        <a href="login.php" target="_blank" class="hero-btn fade-element">Book Appointment</a>
+    </section>
+
+
+    <section class="doctors-section">
+    <div class="intro">
+        <div class="intro-text">
+            <h2>Meet Our Cardio Experts</h2>
+            <p>Dedicated to keeping every heartbeat strong,
+         our cardiology specialists deliver expert care with compassion and precision.</p>
+        </div>
+        <a href="login.php" target="_blank" class="intro-button">Book Appointment</a>
+    </div>
+
+    <div class="cards-container">
+
+        <!-- ====================== CARDIOLOGY ====================== -->
+
+        <div class="card">
+            <img src="jonathan.jpg" alt="Dr. Jonathan Pierce">
+            <h3>Dr. Jonathan Pierce</h3>
+            <p>18 years experience</p>
+            <p>Cardiologist</p>
+            <p>MD, FACC, Interventional Cardiology Fellowship</p>
+            <p class="rating">★★★★★ <span class="rating-num">4.8/5</span></p>
+            <a href="login.php" target="_blank" class="card-button">Book Appointment</a>
+        </div>
+
+        <div class="card">
+            <img src="emily.jpg" alt="Dr. Emily Hartman">
+            <h3>Dr. Emily Hartman</h3>
+            <p>12 years experience</p>
+            <p>Cardiologist</p>
+            <p>MD, Cardiac Imaging Specialist</p>
+            <p class="rating">★★★★☆ <span class="rating-num">4.6/5</span></p>
+            <a href="login.php" target="_blank" class="card-button">Book Appointment</a>
+        </div>
+
+        <div class="card">
+            <img src="miguel.jpg" alt="Dr. Miguel Alvarez">
+            <h3>Dr. Miguel Alvarez</h3>
+            <p>20 years experience</p>
+            <p>Cardiologist</p>
+            <p>MD, PhD (Cardiology)</p>
+            <p class="rating">★★★★★ <span class="rating-num">4.9/5</span></p>
+            <a href="login.php" target="_blank" class="card-button">Book Appointment</a>
+        </div>
+
+        <div class="card">
+            <img src="olivia.jpg" alt="Dr. Olivia Bennett">
+            <h3>Dr. Olivia Bennett</h3>
+            <p>9 years experience</p>
+            <p>Cardiologist</p>
+            <p>MD, MRCP Cardiology</p>
+            <p class="rating">★★★★☆ <span class="rating-num">4.5/5</span></p>
+            <a href="login.php" target="_blank" class="card-button">Book Appointment</a>
+        </div>
+
+        <div class="card">
+            <img src="ethan.jpg" alt="Dr. Ethan Fitzgerald">
+            <h3>Dr. Ethan Fitzgerald</h3>
+            <p>15 years experience</p>
+            <p>Cardiologist</p>
+            <p>MD, Advanced Heart Failure Certification</p>
+            <p class="rating">★★★★☆ <span class="rating-num">4.7/5</span></p>
+            <a href="login.php" target="_blank" class="card-button">Book Appointment</a>
+        </div>
+
+        <div class="card">
+            <img src="sophia.jpg" alt="Dr. Sophia Martens">
+            <h3>Dr. Sophia Martens</h3>
+            <p>7 years experience</p>
+            <p>Cardiologist</p>
+            <p>MD, Cardiac Rehabilitation Specialist</p>
+            <p class="rating">★★★★☆ <span class="rating-num">4.3/5</span></p>
+            <a href="login.php" target="_blank" class="card-button">Book Appointment</a>
+        </div>
+
+        <div class="card">
+            <img src="carlos.jpg" alt="Dr. Carlos Mendes">
+            <h3>Dr. Carlos Mendes</h3>
+            <p>11 years experience</p>
+            <p>Cardiologist (Electrophysiology)</p>
+            <p>MD, Electrophysiology Fellowship</p>
+            <p class="rating">★★★★☆ <span class="rating-num">4.6/5</span></p>
+            <a href="login.php" target="_blank" class="card-button">Book Appointment</a>
+        </div>
+
+        <div class="card">
+            <img src="hannah.jpg" alt="Dr. Hannah Crawford">
+            <h3>Dr. Hannah Crawford</h3>
+            <p>6 years experience</p>
+            <p>Cardiologist (Preventive)</p>
+            <p>MD, Preventive Cardiology Certification</p>
+            <p class="rating">★★★★☆ <span class="rating-num">4.4/5</span></p>
+            <a href="login.php"  target="_blank" class="card-button">Book Appointment</a>
+        </div>
+    </section>
+
+        <!-- ====================== NEUROLOGY ====================== -->
+           <section class="doctors-section">
+    <div class="intro">
+        <div class="intro-text">
+            <h2>Meet Our Neurology Experts</h2>
+            <p>With advanced expertise in the brain and nervous system, our n
+                eurologists are here to support your journey to clarity and strength</p>
+        </div>
+        <a href="login.php" target="_blank" class="intro-button">Book Appointment</a>
+    </div>
+
+    <div class="cards-container">
+
+       
+        <div class="card">
+            <img src="alexander.jpg" alt="Dr. Alexander Novak">
+            <h3>Dr. Alexander Novak</h3>
+            <p>20 years experience</p>
+            <p>Neurologist</p>
+            <p>MD, Epileptology Fellowship</p>
+            <p class="rating">★★★★★ <span class="rating-num">4.8/5</span></p>
+            <a href="login.php" target="_blank" class="card-button">Book Appointment</a>
+        </div>
+
+        <div class="card">
+            <img src="isabella.jpg" alt="Dr. Isabella Romano">
+            <h3>Dr. Isabella Romano</h3>
+            <p>13 years experience</p>
+            <p>Neurologist</p>
+            <p>MD, Neurophysiology Specialist</p>
+            <p class="rating">★★★★☆ <span class="rating-num">4.6/5</span></p>
+            <a href="login.php" target="_blank" class="card-button">Book Appointment</a>
+        </div>
+
+        <div class="card">
+            <img src="henrik.jpg" alt="Dr. Henrik Bauer">
+            <h3>Dr. Henrik Bauer</h3>
+            <p>17 years experience</p>
+            <p>Neurologist (Stroke)</p>
+            <p>MD, Stroke Neurology Certification</p>
+            <p class="rating">★★★★☆ <span class="rating-num">4.7/5</span></p>
+            <a href="login.php" target="_blank" class="card-button">Book Appointment</a>
+        </div>
+
+        <div class="card">
+            <img src="chole.jpg" alt="Dr. Chloe Armstrong">
+            <h3>Dr. Chloe Armstrong</h3>
+            <p>8 years experience</p>
+            <p>Neurologist</p>
+            <p>MD, MRCP Neurology</p>
+            <p class="rating">★★★★☆ <span class="rating-num">4.4/5</span></p>
+            <a href="login.php" target="_blank" class="card-button">Book Appointment</a>
+        </div>
+
+        <div class="card">
+            <img src="rafael.jpg" alt="Dr. Rafael Costa">
+            <h3>Dr. Rafael Costa</h3>
+            <p>10 years experience</p>
+            <p>Neurologist (Neuromuscular)</p>
+            <p>MD, Neuromuscular Medicine Fellowship</p>
+            <p class="rating">★★★★☆ <span class="rating-num">4.5/5</span></p>
+            <a href="login.php" class="card-button">Book Appointment</a>
+        </div>
+
+        <div class="card">
+            <img src="zoe.jpg" alt="Dr. Zoe Mitchell">
+            <h3>Dr. Zoe Mitchell</h3>
+            <p>6 years experience</p>
+            <p>Neurologist (Movement Disorders)</p>
+            <p>MD, Movement Disorders Training</p>
+            <p class="rating">★★★★☆ <span class="rating-num">4.2/5</span></p>
+            <a href="login.php" class="card-button">Book Appointment</a>
+        </div>
+
+        <div class="card">
+            <img src="matteo.jpg" alt="Dr. Matteo Ricci">
+            <h3>Dr. Matteo Ricci</h3>
+            <p>14 years experience</p>
+            <p>Neurologist (Neurocritical Care)</p>
+            <p>MD, Neurocritical Care Fellowship</p>
+            <p class="rating">★★★★★ <span class="rating-num">4.7/5</span></p>
+            <a href="login.php" class="card-button">Book Appointment</a>
+        </div>
+
+        <div class="card">
+            <img src="brianna.jpg" alt="Dr. Brianna Schultz">
+            <h3>Dr. Brianna Schultz</h3>
+            <p>5 years experience</p>
+            <p>Neurologist (EEG/EMG)</p>
+            <p>MD, EEG/EMG Certification</p>
+            <p class="rating">★★★★☆ <span class="rating-num">4.3/5</span></p>
+            <a href="login.php" class="card-button">Book Appointment</a>
+        </div>
+    </section>
+
+        <!-- ====================== PEDIATRICS ====================== -->
+          <section class="doctors-section">
+    <div class="intro">
+        <div class="intro-text">
+            <h2>Meet Our Pediatric Experts</h2>
+            <p>Our team of highly qualified doctors are ready to provide top-notch healthcare services for you.</p>
+        </div>
+        <a href="login.php" target="_blank" class="intro-button">Book Appointment</a>
+    </div>
+
+    <div class="cards-container">
+
+
+        <div class="card">
+            <img src="amelia.jpg" alt="Dr. Amelia Brooks">
+            <h3>Dr. Amelia Brooks</h3>
+            <p>16 years experience</p>
+            <p>Pediatrician</p>
+            <p>MD, Board-Certified Pediatrician</p>
+            <p class="rating">★★★★★ <span class="rating-num">4.8/5</span></p>
+            <a href="login.php" class="card-button">Book Appointment</a>
+        </div>
+
+        <div class="card">
+            <img src="liam.jpg" alt="Dr. Liam Patterson">
+            <h3>Dr. Liam Patterson</h3>
+            <p>9 years experience</p>
+            <p>Pediatric Allergy & Immunology</p>
+            <p>MD, Pediatric Allergy & Immunology</p>
+            <p class="rating">★★★★☆ <span class="rating-num">4.6/5</span></p>
+            <a href="login.php" class="card-button">Book Appointment</a>
+        </div>
+
+        <div class="card">
+            <img src="mendes.jpg" alt="Dr. Sofia Mendes">
+            <h3>Dr. Sofia Mendes</h3>
+            <p>12 years experience</p>
+            <p>Pediatric Infectious Diseases</p>
+            <p>MD, Pediatric Infectious Diseases</p>
+            <p class="rating">★★★★☆ <span class="rating-num">4.7/5</span></p>
+            <a href="login.php" class="card-button">Book Appointment</a>
+        </div>
+
+        <div class="card">
+            <img src="noah.jpg" alt="Dr. Noah Greene">
+            <h3>Dr. Noah Greene</h3>
+            <p>6 years experience</p>
+            <p>Neonatal Care</p>
+            <p>MD, Neonatal Care Training</p>
+            <p class="rating">★★★★☆ <span class="rating-num">4.3/5</span></p>
+            <a href="login.php" class="card-button">Book Appointment</a>
+        </div>
+
+        <div class="card">
+            <img src="harper.jpg" alt="Dr. Harper Quinn">
+            <h3>Dr. Harper Quinn</h3>
+            <p>10 years experience</p>
+            <p>Pediatric Endocrinology</p>
+            <p>MD, Pediatric Endocrinology</p>
+            <p class="rating">★★★★☆ <span class="rating-num">4.6/5</span></p>
+            <a href="login.php" class="card-button">Book Appointment</a>
+        </div>
+
+        <div class="card">
+            <img src="mateo.jpg" alt="Dr. Mateo García">
+            <h3>Dr. Mateo García</h3>
+            <p>7 years experience</p>
+            <p>Developmental Pediatrics</p>
+            <p>MD, Developmental Pediatrics</p>
+            <p class="rating">★★★★☆ <span class="rating-num">4.4/5</span></p>
+            <a href="login.php" class="card-button">Book Appointment</a>
+        </div>
+
+        <div class="card">
+            <img src="ava.jpg" alt="Dr. Ava Lindström">
+            <h3>Dr. Ava Lindström</h3>
+            <p>14 years experience</p>
+            <p>Pediatric Pulmonology</p>
+            <p>MD, Pediatric Pulmonology</p>
+            <p class="rating">★★★★☆ <span class="rating-num">4.7/5</span></p>
+            <a href="login.php" class="card-button">Book Appointment</a>
+        </div>
+
+        <div class="card">
+            <img src="julian.jpg" alt="Dr. Julian Frost">
+            <h3>Dr. Julian Frost</h3>
+            <p>5 years experience</p>
+            <p>Child Nutrition</p>
+            <p>MD, Child Nutrition Certification</p>
+            <p class="rating">★★★★☆ <span class="rating-num">4.2/5</span></p>
+            <a href="login.php" class="card-button">Book Appointment</a>
+        </div>
+    </section>
+
+        <!-- ====================== ORTHOPEDICS ====================== -->
+
+  <section class="doctors-section">
+    <div class="intro">
+        <div class="intro-text">
+            <h2>Meet Our Orthopedic Experts</h2>
+            <p>Our team of highly qualified doctors are ready to provide top-notch healthcare services for you.</p>
+        </div>
+        <a href="login.php" target="_blank" class="intro-button">Book Appointment</a>
+    </div>
+
+    <div class="cards-container">
+
+        <div class="card">
+            <img src="cole.jpg" alt="Dr. Daniel Cole">
+            <h3>Dr. Daniel Cole</h3>
+            <p>18 years experience</p>
+            <p>Orthopedic Surgeon</p>
+            <p>MD, Orthopedic Surgery</p>
+            <p class="rating">★★★★★ <span class="rating-num">4.8/5</span></p>
+            <a href="login.php" class="card-button">Book Appointment</a>
+        </div>
+
+        <div class="card">
+            <img src="victoria.jpg" alt="Dr. Victoria Hayes">
+            <h3>Dr. Victoria Hayes</h3>
+            <p>11 years experience</p>
+            <p>Sports Medicine</p>
+            <p>MD, Sports Medicine Fellowship</p>
+            <p class="rating">★★★★☆ <span class="rating-num">4.6/5</span></p>
+            <a href="login.php" class="card-button">Book Appointment</a>
+        </div>
+
+        <div class="card">
+            <img src="marco.jpg" alt="Dr. Marco Stein">
+            <h3>Dr. Marco Stein</h3>
+            <p>20 years experience</p>
+            <p>Spine Surgeon</p>
+            <p>MD, Spine Surgery Specialist</p>
+            <p class="rating">★★★★★ <span class="rating-num">4.9/5</span></p>
+            <a href="login.php" class="card-button">Book Appointment</a>
+        </div>
+
+        <div class="card">
+            <img src="lauren.jpg" alt="Dr. Lauren Kim">
+            <h3>Dr. Lauren Kim</h3>
+            <p>7 years experience</p>
+            <p>Pediatric Orthopedics</p>
+            <p>MD, Pediatric Orthopedics</p>
+            <p class="rating">★★★★☆ <span class="rating-num">4.4/5</span></p>
+            <a href="login.php" class="card-button">Book Appointment</a>
+        </div>
+
+        <div class="card">
+            <img src="gabriel.jpg" alt="Dr. Gabriel Ortiz">
+            <h3>Dr. Gabriel Ortiz</h3>
+            <p>15 years experience</p>
+            <p>Joint Replacement Specialist</p>
+            <p>MD, Joint Replacement Fellowship</p>
+            <p class="rating">★★★★☆ <span class="rating-num">4.7/5</span></p>
+            <a href="login.php" class="card-button">Book Appointment</a>
+        </div>
+
+        <div class="card">
+            <img src="natalie.jpg" alt="Dr. Natalie Pierce">
+            <h3>Dr. Natalie Pierce</h3>
+            <p>6 years experience</p>
+            <p>Trauma Orthopedics</p>
+            <p>MD, Trauma Orthopedics</p>
+            <p class="rating">★★★★☆ <span class="rating-num">4.3/5</span></p>
+            <a href="login.php" class="card-button">Book Appointment</a>
+        </div>
+
+        <div class="card">
+            <img src="viktor.jpg" alt="Dr. Viktor Sokolov">
+            <h3>Dr. Viktor Sokolov</h3>
+            <p>10 years experience</p>
+            <p>Shoulder & Elbow Specialist</p>
+            <p>MD, Shoulder & Elbow Fellowship</p>
+            <p class="rating">★★★★☆ <span class="rating-num">4.6/5</span></p>
+            <a href="login.php" class="card-button">Book Appointment</a>
+        </div>
+
+        <div class="card">
+            <img src="emilia.jpg" alt="Dr. Emilia Romano">
+            <h3>Dr. Emilia Romano</h3>
+            <p>5 years experience</p>
+            <p>Hand Surgeon</p>
+            <p>MD, Hand Surgery Certification</p>
+            <p class="rating">★★★★☆ <span class="rating-num">4.2/5</span></p>
+            <a href="login.php" class="card-button">Book Appointment</a>
+        </div>
+    </section>
+
+        <!-- ====================== GYNECOLOGY & OBSTETRICS ====================== -->
+           <section class="doctors-section">
+    <div class="intro">
+        <div class="intro-text">
+            <h2>Meet Our Gynecology & Obstetrics Experts</h2>
+            <p>Our team of highly qualified doctors are ready to provide top-notch healthcare services for you.</p>
+        </div>
+        <a href="login.php" target="_blank" class="intro-button">Book Appointment</a>
+    </div>
+
+    <div class="cards-container">
+
+        <div class="card">
+            <img src="natalie.jpg" alt="Dr. Natalie Rivers">
+            <h3>Dr. Natalie Rivers</h3>
+            <p>21 years experience</p>
+            <p>OB-GYN (Maternal–Fetal Medicine)</p>
+            <p>MD, Maternal–Fetal Medicine Fellowship</p>
+            <p class="rating">★★★★★ <span class="rating-num">4.9/5</span></p>
+            <a href="login.php" class="card-button">Book Appointment</a>
+        </div>
+
+        <div class="card">
+            <img src="helena.jpg" alt="Dr. Helena Popov">
+            <h3>Dr. Helena Popov</h3>
+            <p>14 years experience</p>
+            <p>Gynecologic Oncologist</p>
+            <p>MD, Gynecologic Oncology</p>
+            <p class="rating">★★★★☆ <span class="rating-num">4.7/5</span></p>
+            <a href="login.php" class="card-button">Book Appointment</a>
+        </div>
+
+        <div class="card">
+            <img src="laura.jpg" alt="Dr. Laura Coleman">
+            <h3>Dr. Laura Coleman</h3>
+            <p>16 years experience</p>
+            <p>Reproductive Endocrinologist</p>
+            <p>MD, Reproductive Endocrinology</p>
+            <p class="rating">★★★★★ <span class="rating-num">4.8/5</span></p>
+            <a href="login.php" class="card-button">Book Appointment</a>
+        </div>
+
+        <div class="card">
+            <img src="ana.jpg" alt="Dr. Ana Morales">
+            <h3>Dr. Ana Morales</h3>
+            <p>8 years experience</p>
+            <p>Obstetrician (Ultrasound)</p>
+            <p>MD, Obstetric Ultrasound Certification</p>
+            <p class="rating">★★★★☆ <span class="rating-num">4.5/5</span></p>
+            <a href="login.php" class="card-button">Book Appointment</a>
+        </div>
+
+        <div class="card">
+            <img src="elodie.jpg" alt="Dr. Elodie Laurent">
+            <h3>Dr. Elodie Laurent</h3>
+            <p>11 years experience</p>
+            <p>Minimally Invasive Gynecology</p>
+            <p>MD, Minimally Invasive Gynecology</p>
+            <p class="rating">★★★★☆ <span class="rating-num">4.6/5</span></p>
+            <a href="login.php" class="card-button">Book Appointment</a>
+        </div>
+
+        <div class="card">
+            <img src="santos.jpg" alt="Dr. Camila Santos">
+            <h3>Dr. Camila Santos</h3>
+            <p>6 years experience</p>
+            <p>Women’s Health Specialist</p>
+            <p>MD, Women’s Health</p>
+            <p class="rating">★★★★☆ <span class="rating-num">4.3/5</span></p>
+            <a href="login.php" class="card-button">Book Appointment</a>
+        </div>
+
+        <div class="card">
+            <img src="lowell.jpg" alt="Dr. Hannah Lowell">
+            <h3>Dr. Hannah Lowell</h3>
+            <p>18 years experience</p>
+            <p>High-Risk Pregnancy Specialist</p>
+            <p>MD, High-Risk Pregnancy Specialist</p>
+            <p class="rating">★★★★★ <span class="rating-num">4.8/5</span></p>
+            <a href="login.php" class="card-button">Book Appointment</a>
+        </div>
+
+        <div class="card">
+            <img src="serena.jpg" alt="Dr. Serena Kwan">
+            <h3>Dr. Serena Kwan</h3>
+            <p>5 years experience</p>
+            <p>Fertility &amp; IVF Specialist</p>
+            <p>MD, Fertility &amp; IVF Training</p>
+            <p class="rating">★★★★☆ <span class="rating-num">4.4/5</span></p>
+            <a href="login.php" class="card-button">Book Appointment</a>
+        </div>
+    </section>
+
+        <!-- ====================== DERMATOLOGY ====================== -->
+           <section class="doctors-section">
+    <div class="intro">
+        <div class="intro-text">
+            <h2>Meet Our Dermaology Experts</h2>
+            <p>Our team of highly qualified doctors are ready to provide top-notch healthcare services for you.</p>
+        </div>
+        <a href="login.php" target="_blank" class="intro-button">Book Appointment</a>
+    </div>
+
+    <div class="cards-container">
+
+    
+
+        <div class="card">
+            <img src="madeline.jpg" alt="Dr. Madeline Carter">
+            <h3>Dr. Madeline Carter</h3>
+            <p>15 years experience</p>
+            <p>Dermatologist</p>
+            <p>MD, Dermatology</p>
+            <p class="rating">★★★★☆ <span class="rating-num">4.7/5</span></p>
+            <a href="login.php" class="card-button">Book Appointment</a>
+        </div>
+
+        <div class="card">
+            <img src="oscar.jpg" alt="Dr. Oscar Hansen">
+            <h3>Dr. Oscar Hansen</h3>
+            <p>10 years experience</p>
+            <p>Dermato-Oncologist</p>
+            <p>MD, Dermato-Oncology</p>
+            <p class="rating">★★★★☆ <span class="rating-num">4.5/5</span></p>
+            <a href="login.php" class="card-button">Book Appointment</a>
+        </div>
+
+        <div class="card">
+            <img src="lucia.jpg" alt="Dr. Lucia Romano">
+            <h3>Dr. Lucia Romano</h3>
+            <p>12 years experience</p>
+            <p>Cosmetic Dermatology</p>
+            <p>MD, Cosmetic Dermatology</p>
+            <p class="rating">★★★★☆ <span class="rating-num">4.6/5</span></p>
+            <a href="login.php" class="card-button">Book Appointment</a>
+        </div>
+
+        <div class="card">
+            <img src="benjamin.jpg" alt="Dr. Benjamin Clark">
+            <h3>Dr. Benjamin Clark</h3>
+            <p>7 years experience</p>
+            <p>Pediatric Dermatology</p>
+            <p>MD, Pediatric Dermatology</p>
+            <p class="rating">★★★★☆ <span class="rating-num">4.3/5</span></p>
+            <a href="login.php" class="card-button">Book Appointment</a>
+        </div>
+
+        <div class="card">
+            <img src="gabriela.jpg" alt="Dr. Gabriela Fuentes">
+            <h3>Dr. Gabriela Fuentes</h3>
+            <p>9 years experience</p>
+            <p>Clinical Dermatology</p>
+            <p>MD, Clinical Dermatology</p>
+            <p class="rating">★★★★☆ <span class="rating-num">4.4/5</span></p>
+            <a href="login.php" class="card-button">Book Appointment</a>
+        </div>
+
+        <div class="card">
+            <img src="elise.jpg" alt="Dr. Elise Morgan">
+            <h3>Dr. Elise Morgan</h3>
+            <p>6 years experience</p>
+            <p>Laser &amp; Aesthetic Dermatology</p>
+            <p>MD, Laser &amp; Aesthetic Dermatology</p>
+            <p class="rating">★★★★☆ <span class="rating-num">4.3/5</span></p>
+            <a href="login.php" class="card-button">Book Appointment</a>
+        </div>
+
+        <div class="card">
+            <img src="markus.jpg" alt="Dr. Markus Engel">
+            <h3>Dr. Markus Engel</h3>
+            <p>18 years experience</p>
+            <p>Immunodermatology</p>
+            <p>MD, Immunodermatology</p>
+            <p class="rating">★★★★★ <span class="rating-num">4.8/5</span></p>
+            <a href="login.php" class="card-button">Book Appointment</a>
+        </div>
+
+        <div class="card">
+            <img src="chole.jpg" alt="Dr. Chloe Fraser">
+            <h3>Dr. Chloe Fraser</h3>
+            <p>5 years experience</p>
+            <p>Cosmetic Laser Specialist</p>
+            <p>MD, Cosmetic Laser Certification</p>
+            <p class="rating">★★★★☆ <span class="rating-num">4.2/5</span></p>
+            <a href="login.php" class="card-button">Book Appointment</a>
+        </div>
+
+    </section>
+
+        <!-- ====================== DENTISTRY ====================== -->
+           <section class="doctors-section">
+    <div class="intro">
+        <div class="intro-text">
+            <h2>Meet Our Dentistry Experts</h2>
+            <p>Our team of highly qualified doctors are ready to provide top-notch healthcare services for you.</p>
+        </div>
+        <a href="login.php" target="_blank" class="intro-button">Book Appointment</a>
+    </div>
+
+    <div class="cards-container">
+
+
+        <div class="card">
+            <img src="wallace.jpg" alt="Dr. Ethan Wallace">
+            <h3>Dr. Ethan Wallace</h3>
+            <p>17 years experience</p>
+            <p>Oral Surgeon</p>
+            <p>DDS, Oral &amp; Maxillofacial Surgery</p>
+            <p class="rating">★★★★★ <span class="rating-num">4.8/5</span></p>
+            <a href="login.php" class="card-button">Book Appointment</a>
+        </div>
+
+        <div class="card">
+            <img src="mia.jpg" alt="Dr. Mia Schneider">
+            <h3>Dr. Mia Schneider</h3>
+            <p>11 years experience</p>
+            <p>Orthodontist</p>
+            <p>DDS, Orthodontics</p>
+            <p class="rating">★★★★☆ <span class="rating-num">4.6/5</span></p>
+            <a href="login.php" class="card-button">Book Appointment</a>
+        </div>
+
+        <div class="card">
+            <img src="lucas.jpg" alt="Dr. Lucas Moretti">
+            <h3>Dr. Lucas Moretti</h3>
+            <p>14 years experience</p>
+            <p>Prosthodontist</p>
+            <p>DDS, Prosthodontics</p>
+            <p class="rating">★★★★☆ <span class="rating-num">4.7/5</span></p>
+            <a href="login.php" class="card-button">Book Appointment</a>
+        </div>
+
+        <div class="card">
+            <img src="clara.jpg" alt="Dr. Clara Thompson">
+            <h3>Dr. Clara Thompson</h3>
+            <p>7 years experience</p>
+            <p>Pediatric Dentistry</p>
+            <p>DDS, Pediatric Dentistry</p>
+            <p class="rating">★★★★☆ <span class="rating-num">4.4/5</span></p>
+            <a href="login.php" class="card-button">Book Appointment</a>
+        </div>
+
+        <div class="card">
+            <img src="javier.jpg" alt="Dr. Javier Ramos">
+            <h3>Dr. Javier Ramos</h3>
+            <p>9 years experience</p>
+            <p>Endodontist</p>
+            <p>DDS, Endodontics</p>
+            <p class="rating">★★★★☆ <span class="rating-num">4.5/5</span></p>
+            <a href="login.php" class="card-button">Book Appointment</a>
+        </div>
+
+        <div class="card">
+            <img src="harper.jpg" alt="Dr. Harper Wilson">
+            <h3>Dr. Harper Wilson</h3>
+            <p>6 years experience</p>
+            <p>Cosmetic Dentistry</p>
+            <p>DDS, Cosmetic Dentistry Certification</p>
+            <p class="rating">★★★★☆ <span class="rating-num">4.3/5</span></p>
+            <a href="login.php" class="card-button">Book Appointment</a>
+        </div>
+
+        <div class="card">
+            <img src="stefan.jpg" alt="Dr. Stefan Weber">
+            <h3>Dr. Stefan Weber</h3>
+            <p>13 years experience</p>
+            <p>Periodontist</p>
+            <p>DDS, Periodontology</p>
+            <p class="rating">★★★★☆ <span class="rating-num">4.7/5</span></p>
+            <a href="login.php" class="card-button">Book Appointment</a>
+        </div>
+
+        <div class="card">
+            <img src="lily.jpg" alt="Dr. Lily Johansson">
+            <h3>Dr. Lily Johansson</h3>
+            <p>5 years experience</p>
+            <p>Implant Specialist</p>
+            <p>DDS, Implant Training</p>
+            <p class="rating">★★★★☆ <span class="rating-num">4.2/5</span></p>
+            <a href="login.php" class="card-button">Book Appointment</a>
+        </div>
+    </section>
+
+        <!-- ====================== EMERGENCY & TRAUMA CARE ====================== -->
+  <section class="doctors-section">
+    <div class="intro">
+        <div class="intro-text">
+            <h2>Meet Our Emergency & Trauma Care Experts</h2>
+            <p>Our team of highly qualified doctors are ready to provide top-notch healthcare services for you.</p>
+        </div>
+        <a href="login.php" target="_blank" class="intro-button">Book Appointment</a>
+    </div>
+
+    <div class="cards-container">
+
+        <div class="card">
+            <img src="ryan.jpg" alt="Dr. Ryan Cooper">
+            <h3>Dr. Ryan Cooper</h3>
+            <p>19 years experience</p>
+            <p>Emergency Medicine</p>
+            <p>MD, Emergency Medicine</p>
+            <p class="rating">★★★★★ <span class="rating-num">4.7/5</span></p>
+            <a href="login.php" class="card-button">Book Appointment</a>
+        </div>
+
+        <div class="card">
+            <img src="elena.jpg" alt="Dr. Elena Varga">
+            <h3>Dr. Elena Varga</h3>
+            <p>13 years experience</p>
+            <p>Trauma Surgeon (Night shifts)</p>
+            <p>MD, Trauma Surgery</p>
+            <p class="rating">★★★★☆ <span class="rating-num">4.6/5</span></p>
+            <a href="login.php" class="card-button">Book Appointment</a>
+        </div>
+
+        <div class="card">
+            <img src="diego.jpg" alt="Dr. Diego Moreira">
+            <h3>Dr. Diego Moreira</h3>
+            <p>16 years experience</p>
+            <p>Critical Care / Emergency</p>
+            <p>MD, Critical Care Fellowship</p>
+            <p class="rating">★★★★★ <span class="rating-num">4.8/5</span></p>
+            <a href="login.php" class="card-button">Book Appointment</a>
+        </div>
+
+        <div class="card">
+            <img src="paige.jpg" alt="Dr. Paige Turner">
+            <h3>Dr. Paige Turner</h3>
+            <p>7 years experience</p>
+            <p>Acute Care / Emergency (Weekend)</p>
+            <p>MD, Acute Care Medicine</p>
+            <p class="rating">★★★★☆ <span class="rating-num">4.4/5</span></p>
+            <a href="login.php" class="card-button">Book Appointment</a>
+        </div>
+
+        <div class="card">
+            <img src="viktor.jpg" alt="Dr. Viktor Ivanov">
+            <h3>Dr. Viktor Ivanov</h3>
+            <p>11 years experience</p>
+            <p>Emergency Ultrasound Specialist</p>
+            <p>MD, Emergency Ultrasound</p>
+            <p class="rating">★★★★☆ <span class="rating-num">4.5/5</span></p>
+            <a href="login.php" class="card-button">Book Appointment</a>
+        </div>
+
+        <div class="card">
+            <img src="danielle.jpg" alt="Dr. Danielle Ford">
+            <h3>Dr. Danielle Ford</h3>
+            <p>6 years experience</p>
+            <p>Disaster Medicine / Emergency</p>
+            <p>MD, Disaster Medicine Certification</p>
+            <p class="rating">★★★★☆ <span class="rating-num">4.3/5</span></p>
+            <a href="login.php" class="card-button">Book Appointment</a>
+        </div>
+
+        <div class="card">
+            <img src="hugo.jpg" alt="Dr. Hugo Bernard">
+            <h3>Dr. Hugo Bernard</h3>
+            <p>14 years experience</p>
+            <p>Trauma &amp; Resuscitation Specialist</p>
+            <p>MD, Trauma &amp; Resuscitation Training</p>
+            <p class="rating">★★★★☆ <span class="rating-num">4.6/5</span></p>
+            <a href="login.php" class="card-button">Book Appointment</a>
+        </div>
+
+        <div class="card">
+            <img src="aria.jpg" alt="Dr. Aria Woods">
+            <h3>Dr. Aria Woods</h3>
+            <p>5 years experience</p>
+            <p>Emergency Critical Care</p>
+            <p>MD, Emergency Critical Care</p>
+            <p class="rating">★★★★☆ <span class="rating-num">4.2/5</span></p>
+            <a href="login.php" class="card-button">Book Appointment</a>
+        </div>
+    </section>
+
+        <!-- ====================== PHYSIOTHERAPY ====================== -->
+           <section class="doctors-section">
+    <div class="intro">
+        <div class="intro-text">
+            <h2>Meet Our Physiotherapy Experts</h2>
+            <p>Our team of highly qualified doctors are ready to provide top-notch healthcare services for you.</p>
+        </div>
+        <a href="login.php" target="_blank" class="intro-button">Book Appointment</a>
+    </div>
+
+    <div class="cards-container">
+
+
+        <div class="card">
+            <img src="natalie.jpg" alt="Dr. Natalie Shaw">
+            <h3>Dr. Natalie Shaw</h3>
+            <p>15 years experience</p>
+            <p>Physiotherapist (Orthopedic)</p>
+            <p>DPT, Orthopedic Physical Therapy</p>
+            <p class="rating">★★★★☆ <span class="rating-num">4.7/5</span></p>
+            <a href="login.php" class="card-button">Book Appointment</a>
+        </div>
+
+        <div class="card">
+            <img src="andre.jpg" alt="Dr. Andre Müller">
+            <h3>Dr. Andre Müller</h3>
+            <p>10 years experience</p>
+            <p>Physiotherapist (Sports Rehab)</p>
+            <p>DPT, Sports Rehabilitation</p>
+            <p class="rating">★★★★☆ <span class="rating-num">4.5/5</span></p>
+            <a href="login.php" class="card-button">Book Appointment</a>
+        </div>
+
+        <div class="card">
+            <img src="camila.jpg" alt="Dr. Camila Duarte">
+            <h3>Dr. Camila Duarte</h3>
+            <p>9 years experience</p>
+            <p>Physiotherapist (Neurological)</p>
+            <p>DPT, Neurological Physical Therapy</p>
+            <p class="rating">★★★★☆ <span class="rating-num">4.4/5</span></p>
+            <a href="login.php" class="card-button">Book Appointment</a>
+        </div>
+
+        <div class="card">
+            <img src="carter.jpg" alt="Dr. Liam Carter">
+            <h3>Dr. Liam Carter</h3>
+            <p>7 years experience</p>
+            <p>Physiotherapist (Pediatric)</p>
+            <p>DPT, Pediatric Physical Therapy</p>
+            <p class="rating">★★★★☆ <span class="rating-num">4.3/5</span></p>
+            <a href="login.php" class="card-button">Book Appointment</a>
+        </div>
+
+        <div class="card">
+            <img src="johanson.jpg" alt="Dr. Mia Johansson">
+            <h3>Dr. Mia Johansson</h3>
+            <p>11 years experience</p>
+            <p>Physiotherapist (Women’s Health)</p>
+            <p>DPT, Women’s Health Physical Therapy</p>
+            <p class="rating">★★★★☆ <span class="rating-num">4.6/5</span></p>
+            <a href="login.php" class="card-button">Book Appointment</a>
+        </div>
+
+        <div class="card">
+            <img src="jakub.jpg" alt="Dr. Jakub Nowak">
+            <h3>Dr. Jakub Nowak</h3>
+            <p>6 years experience</p>
+            <p>Physiotherapist (Manual Therapy)</p>
+            <p>DPT, Manual Therapy Specialist</p>
+            <p class="rating">★★★★☆ <span class="rating-num">4.3/5</span></p>
+            <a href="login.php" class="card-button">Book Appointment</a>
+        </div>
+
+        <div class="card">
+            <img src="emma.jpg" alt="Dr. Emma Fitzgerald">
+            <h3>Dr. Emma Fitzgerald</h3>
+            <p>13 years experience</p>
+            <p>Physiotherapist (Cardiorespiratory)</p>
+            <p>DPT, Cardiorespiratory Physical Therapy</p>
+            <p class="rating">★★★★★ <span class="rating-num">4.7/5</span></p>
+            <a href="login.php" class="card-button">Book Appointment</a>
+        </div>
+
+        <div class="card">
+            <img src="santos.jpg" alt="Dr. Hugo Santos">
+            <h3>Dr. Hugo Santos</h3>
+            <p>5 years experience</p>
+            <p>Physiotherapist (Sports Injury)</p>
+            <p>DPT, Sports Injury Certification</p>
+            <p class="rating">★★★★☆ <span class="rating-num">4.2/5</span></p>
+            <a href="login.php" class="card-button">Book Appointment</a>
+        </div>
+
+    </div> <!-- .cards-container -->
+</section>
+
+
+<footer class="footer">
+  <div class="footer-container">
+    
+    <div class="footer-section about">
+      <h2>Medicare Plus</h2>
+      <p>Your trusted partner in health. We provide advanced medical care, friendly service, and expert doctors.</p>
+    </div>
+
+    <div class="footer-section links">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="medicare_homepage.php">Home</a></li>
+        <li><a href="aboutus.html">About Us</a></li>
+        <li><a href="department.html">Departments</a></li>        
+        <li><a href="doctors.html">Doctors</a></li>
+        <li><a href="contactus.html">Contact Us</a></li>
+        
+        
+      </ul>
+    </div>
+
+    <div class="footer-section contact">
+      <h3>Contact Info</h3>
+      <p><strong>Phone:</strong> +94 71 234 5678</p>
+      <p><strong>Email:</strong> info@medicareplus.com</p>
+      <p><strong>Address:</strong> No. 07, Main Street, Colombo</p>
+    </div>
+
+    </div>
+
+  <div class="footer-bottom">
+    <p>© 2025 Medicare Plus. All Rights Reserved.</p>
+  </div>
+</footer>
+    <script>
+
+        window.addEventListener("load", () => {
+            const elements = document.querySelectorAll(".fade-element");
+
+            elements.forEach((el, index) => {    //welcome section
+                setTimeout(() => {
+                    el.classList.add("show");
+                }, index * 300); // stagger animation
+            });
+        });
+
+    </script>
+
+    <script>
+        // Intersection Observer for scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                } else {
+                    entry.target.classList.remove('visible'); // fade out when scrolling up
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.intro-text, .intro-button, .card').forEach(el => observer.observe(el));
+    </script>
+
+
+
+
+</body>
+
+</html>

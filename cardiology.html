@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardiology Department - Medicare Plus</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Yrsa:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+
+      /* ================= HERO SECTION ================= */
+
+        /* --- HEADER & NAV --- */
+        .hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* controls hero-text position */
+    align-items: center;
+    text-align: center;
+    background: url('cb.jpg') center/cover no-repeat;
+    color: #fff;
+    padding-left: 80px;
+    padding-right: 20px;
+   /* padding-bottom: 120px;*/
+    position: relative; /* important for absolute header */
+}
+
+/* header inside hero */
+header {
+    position: absolute;
+    top: 20px; /* distance from top of hero */
+    left: 50px; /* distance from left edge */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: calc(100% - 100px); /* full width minus left+right offsets */
+    color: #fff;
+    z-index: 10;
+    font-family: "DM Serif Text", serif;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+        .logo-text {
+            font-size: 26px;
+            font-weight: 600;
+            color: #fff;
+            font-family: "DM Serif Text", serif;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 500;
+            transition: 0.3s;
+            font-family: "Tinos", serif;
+            font-size: 19px;
+        }
+
+        /* Login Button */
+        .login-btn {
+            padding: 8px 18px;
+            background: #23a5e6b3;
+            color: #ffffff;
+            border-radius: 25px;
+            font-weight: 100;
+            text-decoration: none;
+            transition: .3s;
+            font-family: "Tinos", serif;
+            font-size: 19px;
+        }
+
+        .login-btn:hover {
+            background: #c8f6ff;
+        }
+
+  
+
+
+        .hero-text {
+            text-align: center;
+            max-width: 600px;
+            animation: fadeIn 1.3s ease;
+        }
+
+        .hero-text h1 {
+            font-size: 50px;
+            margin-bottom: 10px;
+        }
+
+        .hero-text p {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .hero-btn {
+            padding: 12px 25px;
+            background: #67c6f6;
+            color: white;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        .hero-btn:hover {
+            background: #5192e2;
+        }
+
+        /* Fade-in animation */
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 1.5s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ================= WHAT WE TREAT ================= */
+        .treat {
+            padding: 50px 10%;
+            text-align: center;
+            background-color: #85a6cee7;
+        }
+
+        .treat-grid {
+            display: grid;
+            gap: 20px;
+            margin-top: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        }
+
+        .treat-card {
+            background: #b8d0e988;
+            color: #ffffff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0px 3px 10px rgba(0,0,0,0.1);
+            transition: 0.3s;
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        .treat-card h2 {
+            font-family: 'Times New Roman', serif;
+            color: #ffffff;
+        }
+
+
+        .treat-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .show {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+
+        /* ================= DOCTORS SECTION ================= */
+/* Section */
+.doctor-section {
+    padding: 60px 8%;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 35px;
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: fadeDown 0.9s forwards ease;
+}
+
+/* Grid (3 per row) */
+.doctor-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+/* Doctor Card */
+.doctor-card {
+    background: #64ace349;
+    border-radius: 18px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 6px 25px rgba(0,0,0,0.08);
+    transition: 0.6s ease;
+
+    opacity: 0;
+    transform: translateY(40px);
+}
+
+.doctor-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.doctor-card h3 {
+    margin-top: 15px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.doctor-card p {
+    font-size: 14px;
+    color: #555;
+    margin: 4px 0;
+}
+
+/* Button */
+.card-button {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 18px;
+    background: #0d6ca3;
+    color: #fff;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.card-button:hover {
+    background: #4578b7;
+}
+
+/* Scroll-triggered fade in */
+.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Title fade-down */
+@keyframes fadeDown {
+    0% { opacity: 0; transform: translateY(-20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .doctor-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .doctor-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* Contact Doctor Section */
+.contact-doctor-section {
+    height: 40vh;
+    background-image: url("ww.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    justify-content: center;  /* horizontal center */
+    align-items: center;      /* vertical center */
+    text-align: center;       /* centers text inside */
+    position: relative;
+
+    opacity: 0;
+    transform: translateY(50px); /* start slightly lower */
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.contact-doctor-section.active {
+    opacity: 1;
+    transform: translateY(0); /* slide up */
+}
+
+/* Overlay */
+.contact-doctor-section .overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    z-index: 1;
+}
+
+/* Text */
+.contact-content {
+    position: relative;
+    z-index: 2;
+    max-width: 500px;
+    color: #fff;
+
+    opacity: 0;
+    transform: translateY(20px); /* small upward slide */
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.contact-content.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Headings & Paragraph */
+.contact-content h2{
+    font-family: "DM Serif Text", serif;
+    font-size: 24px;
+    color: #fff;
+}
+.contact-content p {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 19px;
+    margin: 0 0 15px 0;
+}
+.contact-btn {
+    display: inline-block;      /* allows proper width and centering */
+    padding: 12px 28px;
+    background-color: #008080;
+    color: white;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 600;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: 0.3s ease;
+    text-align: center;         /* centers text inside button */
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 15px;           /* space below paragraph */
+}
+
+.contact-btn:hover {
+    background-color: #006666;
+}
+
+/*==========facility part*/
+.facility {
+    padding: 60px 10%;
+    text-align: center;
+}
+
+.facility h2 {
+    margin-bottom: 40px;
+}
+
+.facility-grid {
+    display: grid;
+    gap: 40px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.facility-card {
+    background: #afcae4;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    text-align: center;
+    opacity: 0;
+    transform: translateX(0);
+    transition: all 1s ease;
+}
+
+.facility-card img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.facility-card h3 {
+    margin: 10px 0;
+    font-size: 22px;
+}
+
+.facility-card p {
+    font-size: 16px;
+}
+
+/* Fade-in from left and right */
+.fade-left {
+    transform: translateX(-50px);
+}
+
+.fade-right {
+    transform: translateX(50px);
+}
+
+.fade-left.show, .fade-right.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+        /* Footer */
+        .footer {
+            background: #0d1b2a;
+            color: #ffffff;
+            padding: 50px 0 20px;
+            margin-top: 50px;
+        }
+
+        .footer-container {
+            width: 85%;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-section h2,
+        .footer-section h3 {
+            margin-bottom: 15px;
+            font-weight: 600;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .footer-section p {
+            line-height: 1.6;
+            color: #e0e0e0;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 8px;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .footer-section ul li a {
+            color: #e0e0e0;
+            text-decoration: none;
+            transition: 0.3s;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .footer-section ul li a:hover {
+            color: #00a8e8;
+        }
+
+        .social-icons a {
+            display: inline-block;
+            margin-right: 10px;
+            color: white;
+            font-size: 20px;
+            transition: 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: #00a8e8;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #33415c;
+            margin-top: 30px;
+        }
+
+        .footer-bottom p {
+            font-size: 14px;
+            color: #cfd6e1;
+        }
+
+    </style>
+</head>
+<section class="hero">
+    <header>
+        <div class="logo-text">Medicare Plus</div>
+
+        <div class="nav-right">
+            <nav>
+                <ul>
+                    <li><a href="medicare_homepage.php">Home</a></li>
+                    <li><a href="aboutus.html">About Us</a></li>
+                    <li><a href="department.html">Departments</a></li>
+                    <li><a href="doctors.html">Doctors</a></li>
+                    <li><a href="contactus.html">Contact Us</a></li>
+                </ul>
+            </nav>
+
+            <a href="login.php" target="_blank" class="login-btn">Login</a>
+        </div>
+    </header>
+
+
+    <div class="hero-text fade-in">
+        <h1>Cardiology Department</h1>
+        <p>Protecting every heartbeat with expert care and advanced treatments.</p>
+        <a href="login.php" target="_blank" class="hero-btn">Book Appointment</a>
+    </div>
+  </section>
+
+   
+    
+
+    <!-- ================= WHAT WE TREAT ================= -->
+    <section class="treat">
+        <h2>What We Treat here in MediCare Plus</h2>
+        <div class="treat-grid">
+
+            <div class="treat-card fade-card">
+                <h3>Heart Disease</h3>
+            </div>
+
+            <div class="treat-card fade-card">
+                <h3>Arrhythmia</h3>
+      
+            </div>
+
+            <div class="treat-card fade-card">
+                <h3>High Blood Pressure</h3>
+            </div>
+
+            <div class="treat-card fade-card">
+                <h3>Chest Pain</h3>
+            </div>
+
+             <div class="treat-card fade-card">
+                <h3>Congenital Heart Disease</h3>
+            </div>
+
+             <div class="treat-card fade-card">
+                <h3>Cardiomyopathy</h3>
+            </div>
+
+             <div class="treat-card fade-card">
+                <h3>Peripheral Artery Disease</h3>
+            </div>
+
+             <div class="treat-card fade-card">
+                <h3>Aortic Aneurysm & Aortic Disease</h3>
+            </div>
+
+             <div class="treat-card fade-card">
+                <h3>Hyperlipidemia (High Cholesterol)</h3>
+            </div>
+
+            <div class="treat-card fade-card">
+                <h3>Syncope</h3>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ================= DOCTORS ================= -->
+
+
+        <section class="doctor-section">
+    <h2 class="section-title">Our Cardiology Specialists</h2>
+
+    <div class="doctor-grid">
+
+        <div class="doctor-card">
+            <img src="jonathan.jpg" alt="Dr. Jonathan Pierce">
+            <h3>Dr. Jonathan Pierce</h3>
+            <p>18 years experience</p>
+            <p>Cardiologist</p>
+            <p>MD, FACC, Interventional Cardiology</p>
+            <a href="login.php" target="_blank" class="card-button">Book Appointment</a>
+        </div>
+
+        <div class="doctor-card">
+            <img src="emily.jpg" alt="Dr. Emily Hartman">
+            <h3>Dr. Emily Hartman</h3>
+            <p>12 years experience</p>
+            <p>Cardiologist</p>
+            <p>MD, Cardiac Imaging Specialist</p>
+            <a href="login.php" target="_blank" class="card-button">Book Appointment</a>
+        </div>
+
+        <div class="doctor-card">
+            <img src="miguel.jpg" alt="Dr. Miguel Alvarez">
+            <h3>Dr. Miguel Alvarez</h3>
+            <p>20 years experience</p>
+            <p>Cardiologist</p>
+            <p>MD, PhD (Cardiology)</p>
+            <a href="login.php" target="_blank" class="card-button">Book Appointment</a>
+        </div>
+
+        <div class="doctor-card">
+            <img src="olivia.jpg" alt="Dr. Olivia Bennett">
+            <h3>Dr. Olivia Bennett</h3>
+            <p>9 years experience</p>
+            <p>Cardiologist</p>
+            <p>MD, MRCP Cardiology</p>
+            <a href="login.php" target="_blank" class="card-button">Book Appointment</a>
+        </div>
+
+        <div class="doctor-card">
+            <img src="ethan.jpg" alt="Dr. Ethan Fitzgerald">
+            <h3>Dr. Ethan Fitzgerald</h3>
+            <p>15 years experience</p>
+            <p>Cardiologist</p>
+            <p>MD, Advanced Heart Failure</p>
+            <a href="login.php" target="_blank" class="card-button">Book Appointment</a>
+        </div>
+
+        <div class="doctor-card">
+            <img src="sophia.jpg" alt="Dr. Sophia Martens">
+            <h3>Dr. Sophia Martens</h3>
+            <p>7 years experience</p>
+            <p>Cardiologist</p>
+            <p>MD, Cardiac Rehabilitation</p>
+            <a href="login.php" target="_blank" class="card-button">Book Appointment</a>
+        </div>
+
+    </div>
+</section>
+<!-- ================= SECTION 4: FACILITIES ================= -->
+<section class="facility">
+    <h2>Our Advanced Facilities Available in Medicare Plus</h2>
+
+    <div class="facility-grid">
+
+        <div class="facility-card fade-left">
+            <img src="ecg.jpg" alt="ECG Machine">
+            <h3>ECG Machine</h3>
+            <p>Records the electrical activity of the heart. Detects arrhythmias, heart attacks, and other abnormalities.</p>
+        </div>
+
+        <div class="facility-card fade-right">
+            <img src="echo.jpg" alt="Echocardiogram">
+            <h3>Echocardiogram</h3>
+            <p>Uses ultrasound to visualize heart chambers and valves. Includes 2D, 3D, and Doppler imaging for accurate diagnosis.</p>
+        </div>
+
+        <div class="facility-card fade-left">
+            <img src="stress.jpg" alt="Treadmill Stress Test">
+            <h3>Treadmill Stress Test</h3>
+            <p>Evaluates how the heart performs under physical stress. Detects ischemia and exercise-induced arrhythmias.</p>
+        </div>
+
+        <div class="facility-card fade-right">
+            <img src="moni.jpg" alt="Holter Monitor">
+            <h3>Holter Monitor</h3>
+            <p>Portable ECG monitor worn for 24–48 hours to detect intermittent arrhythmias that may not appear in regular ECG tests.</p>
+        </div>
+
+    </div>
+</section>
+
+        </div>
+    </section>
+
+  
+   
+<section class="contact-doctor-section">
+    <div class="overlay"></div>
+    <div class="contact-content">
+        <h2>Need to Consult a Doctor?</h2> 
+        <p>Your health matters. Book your appointment with our specialists today.</p>
+        <a href="login.php" target="_blank" class="contact-btn">Book Appointment</a>
+    </div>
+</section>
+
+ 
+<footer class="footer">
+  <div class="footer-container">
+    
+    <div class="footer-section about">
+      <h2>Medicare Plus</h2>
+      <p>Your trusted partner in health. We provide advanced medical care, friendly service, and expert doctors.</p>
+    </div>
+
+    <div class="footer-section links">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="medicare_homepage.php">Home</a></li>
+        <li><a href="aboutus.html">About Us</a></li>
+        <li><a href="department.html">Departments</a></li>        
+        <li><a href="doctors.html">Doctors</a></li>
+        <li><a href="contactus.html">Contact Us</a></li>
+        
+        
+      </ul>
+    </div>
+
+    <div class="footer-section contact">
+      <h3>Contact Info</h3>
+      <p><strong>Phone:</strong> +94 71 234 5678</p>
+      <p><strong>Email:</strong> info@medicareplus.com</p>
+      <p><strong>Address:</strong> No. 07, Main Street, Colombo</p>
+    </div>
+
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2025 Medicare Plus. All Rights Reserved.</p>
+  </div>
+</footer>
+
+    <!-- ================= JAVASCRIPT ================= -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('show');
+                    } else {
+                        entry.target.classList.remove('show');
+                    }
+                });
+            }, { threshold: 0.2 });
+
+            document.querySelectorAll('.treat-card, .card').forEach(el => observer.observe(el));
+
+        });
+    </script>
+    <script>
+document.addEventListener("DOMContentLoaded", () => {
+    const cards = document.querySelectorAll(".doctor-card");
+
+    function fadeDoctors() {
+        cards.forEach(card => {
+            const rect = card.getBoundingClientRect();
+            const visible = rect.top < window.innerHeight - 80;
+
+            if (visible) {
+                card.classList.add("show");
+            } else {
+                card.classList.remove("show");
+            }
+        });
+    }
+
+    window.addEventListener("scroll", fadeDoctors);
+    fadeDoctors();
+});
+</script>
+<script>
+// Intersection Observer for fade animations
+document.addEventListener("DOMContentLoaded", () => {
+    const facilities = document.querySelectorAll('.fade-left, .fade-right');
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('show');
+            }
+        });
+    }, { threshold: 0.2 });
+
+    facilities.forEach(facility => observer.observe(facility));
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const section = document.querySelector(".contact-doctor-section");
+    const text = document.querySelector(".contact-content");
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                section.classList.add("active");
+                text.classList.add("active");
+            } else {
+                section.classList.remove("active");
+                text.classList.remove("active");
+            }
+        });
+    }, { threshold: 0.3 });
+
+    observer.observe(section);
+});
+</script>
+</body>
+</html>

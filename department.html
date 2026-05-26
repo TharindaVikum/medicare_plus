@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Departments - Medicare Plus</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Text&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Tinos&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Yrsa:ital,wght@0,300..700;1,300..700&display=swap"
+        rel="stylesheet">
+    <style>
+        /* --- GENERAL RESET --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* --- HEADER & NAV --- */
+        header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 25px 70px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+            font-size: 26px;
+            font-weight: 600;
+            color: #fff;
+            font-family: "DM Serif Text", serif;
+        }
+
+        .logo-text {
+            font-size: 26px;
+            font-weight: 600;
+            color: #fff;
+            font-family: "DM Serif Text", serif;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 500;
+            transition: 0.3s;
+            font-family: "Tinos", serif;
+            font-size: 19px;
+        }
+
+        /* Login Button */
+        .login-btn {
+            padding: 8px 18px;
+            background: #23a5e6b3;
+            color: #ffffff;
+            border-radius: 25px;
+            font-weight: 100;
+            text-decoration: none;
+            transition: .3s;
+            font-family: "Tinos", serif;
+            font-size: 19px;
+        }
+
+        .login-btn:hover {
+            background: #c8f6ff;
+        }
+
+        /* --- WELCOME SECTION --- */
+        .welcome-section {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            /* moves content downward */
+            align-items: flex-start;
+            text-align: left;
+
+            background: linear-gradient(to right, rgba(127, 205, 205, 0.747), rgba(77, 125, 125, 0.193)),
+                url('department.jpg') center/cover no-repeat;
+
+            color: #fff;
+            padding-left: 80px;
+            padding-right: 20px;
+            padding-bottom: 120px;
+            /* controls distance from bottom */
+        }
+
+
+        .welcome-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 12px;
+            font-family: "Tinos", serif;
+            font-weight: 700;
+            color: rgb(34, 73, 89);
+        }
+
+        .welcome-section h1 {
+            font-size: 50px;
+            font-family: "Tinos", serif;
+            font-weight: 700;
+        }
+
+
+        /* -----------------------------------------------------
+    📱 MOBILE RESPONSIVE SECTION  (max-width: 768px)
+------------------------------------------------------ */
+        @media (max-width: 768px) {
+
+            /* NAVIGATION STACKS */
+            header {
+                padding: 20px 25px;
+            }
+
+            nav ul {
+                display: none;
+                /* hide menu for now */
+            }
+
+            .login-btn {
+                padding: 6px 14px;
+                font-size: 14px;
+            }
+
+            .logo-text {
+                font-size: 22px;
+            }
+
+            /* WELCOME AREA */
+            .welcome-section {
+                padding-left: 25px;
+                padding-right: 25px;
+                background-position: center;
+                align-items: center;
+                /* center text on mobile */
+                text-align: center;
+            }
+
+            .welcome-section h2 {
+                font-size: 1.8rem;
+            }
+
+            .welcome-section h1 {
+                font-size: 3.2rem;
+
+            }
+
+        }
+
+        .hero-btn {
+            background-color: #fff;
+            color: #008080;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            font-family: "DM Serif Text", serif;
+            transition: 0.3s;
+            text-decoration: none;
+            text-align: center;
+            display: inline-block;
+            /* prevents stretching */
+            margin-top: 20px;
+            /* spacing under the paragraph */
+            align-items: right;
+            /* aligns button to the left */
+            width: 210px;
+        }
+
+
+
+        /* ---------------------------------------------
+    📱 EXTRA SMALL MOBILE (max-width: 480px)
+---------------------------------------------- */
+        @media (max-width: 480px) {
+
+            .welcome-section h2 {
+                font-size: 1.5rem;
+            }
+
+            .welcome-section h1 {
+                font-size: 1.8rem;
+            }
+
+            .login-btn {
+                padding: 5px 12px;
+                font-size: 13px;
+            }
+
+            .logo-text {
+                font-size: 20px;
+            }
+        }
+
+        /* Verse Section */
+        .verse-section {
+            height: 22vh;
+            /* prevents text from being cut */
+            display: flex;
+            flex-direction: column;
+            /* ⬅ Stack the text vertically */
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 10px;
+            background-color: #29808089;
+        }
+
+        /* Verse Styling */
+        .verse {
+            font-size: 1.6rem;
+            font-family: "Tinos", serif;
+            font-weight: 600;
+            line-height: 1.4;
+            max-width: 900px;
+            margin: 5px 0;
+            /* ⬅ reduces gap between both lines */
+        }
+
+        .fade-element {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in-active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+        /* DEPARTMENTS SECTION */
+        .departments {
+            text-align: center;
+            padding: 70px 60px 40px;
+            /* reduced bottom padding from 70px to 40px */
+            background: #fff;
+            margin-bottom: 0;
+            /* remove extra spacing below */
+        }
+
+        .departments h2 {
+            color: #008080;
+            margin-bottom: 40px;
+            font-size: 35px;
+            font-family: "Yrsa", serif;
+        }
+
+        .dept-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            /* 3 equal-width columns */
+            gap: 30px;
+            /* smaller spacing */
+            justify-items: stretch;
+            /* make cards fill the full column */
+            align-items: stretch;
+            margin-top: 20px;
+        }
+
+        .dept-card {
+            background-color: #9ff0f077;
+            padding: 30px;
+            border-radius: 12px;
+            transition: all 0.8s ease-out;
+            opacity: 0;
+            transform: translateY(50px);
+            min-height: 230px;
+
+            /* Centering styles */
+            display: flex;
+            flex-direction: column;
+            /* stack items vertically */
+            justify-content: center;
+            /* center vertically */
+            align-items: center;
+            /* center horizontally */
+            text-align: center;
+            /* center text content */
+            width: 100%;
+            max-width: none;
+        }
+
+
+        .dept-card.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .dept-card:hover {
+            background-color: #35e7e783;
+            transform: translateY(-5px);
+        }
+
+        .dept-card i {
+            font-size: 35px;
+            color: #008080;
+            margin-bottom: 15px;
+        }
+
+        .dept-card h3 {
+            margin-bottom: 10px;
+            color: #006666;
+            font-family: "Yrsa", serif;
+            font-size: 30px;
+        }
+
+        .dept-card p {
+            font-size: 15px;
+            color: #555;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .dept-btn {
+            background-color: #008080;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 15px;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+            font-family: 'Times New Roman', Times, serif;
+            text-decoration: none;
+        }
+
+
+        .dept-btn:hover {
+            background-color: #00a0a0;
+            /* lighter teal on hover */
+            transform: translateY(-3px);
+            /* subtle lift effect */
+        }
+
+        .departments h2 {
+            color: #008080;
+            margin-bottom: 40px;
+            font-size: 35px;
+            font-family: "Yrsa", serif;
+
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .departments h2.slide-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Contact Doctor Section */
+        .contact-doctor-section {
+            height: 40vh;
+            background-image: url("section.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
+            display: flex;
+            justify-content: center;
+            /* horizontal center */
+            align-items: center;
+            /* vertical center */
+            text-align: center;
+            /* centers text inside */
+            position: relative;
+
+            opacity: 0;
+            transform: translateY(50px);
+            /* start slightly lower */
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+
+        .contact-doctor-section.active {
+            opacity: 1;
+            transform: translateY(0);
+            /* slide up */
+        }
+
+        /* Overlay */
+        .contact-doctor-section .overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.55);
+            z-index: 1;
+        }
+
+        /* Text */
+        .contact-content {
+            position: relative;
+            z-index: 2;
+            max-width: 500px;
+            color: #fff;
+
+            opacity: 0;
+            transform: translateY(20px);
+            /* small upward slide */
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+
+        .contact-content.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Headings & Paragraph */
+        .contact-content h2 {
+            font-family: "DM Serif Text", serif;
+            font-size: 24px;
+            color: #fff;
+        }
+
+        .contact-content p {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 19px;
+            margin: 0 0 15px 0;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            /* allows proper width and centering */
+            padding: 12px 28px;
+            background-color: #008080;
+            color: white;
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: 600;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: 0.3s ease;
+            text-align: center;
+            /* centers text inside button */
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 15px;
+            /* space below paragraph */
+        }
+
+        .contact-btn:hover {
+            background-color: #006666;
+        }
+
+        
+        /* Footer */
+        .footer {
+            background: #0d1b2a;
+            color: #ffffff;
+            padding: 50px 0 20px;
+            margin-top: 50px;
+        }
+
+        .footer-container {
+            width: 85%;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-section h2,
+        .footer-section h3 {
+            margin-bottom: 15px;
+            font-weight: 600;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .footer-section p {
+            line-height: 1.6;
+            color: #e0e0e0;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 8px;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .footer-section ul li a {
+            color: #e0e0e0;
+            text-decoration: none;
+            transition: 0.3s;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .footer-section ul li a:hover {
+            color: #00a8e8;
+        }
+
+        .social-icons a {
+            display: inline-block;
+            margin-right: 10px;
+            color: white;
+            font-size: 20px;
+            transition: 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: #00a8e8;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #33415c;
+            margin-top: 30px;
+        }
+
+        .footer-bottom p {
+            font-size: 14px;
+            color: #cfd6e1;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <header>
+        <div class="logo-text">Medicare Plus</div>
+
+        <div class="nav-right">
+            <nav>
+                <ul>
+                    <li><a href="medicare_homepage.php">Home</a></li>
+                    <li><a href="aboutus.html">About Us</a></li>
+                    <li><a href="department.html">Departments</a></li>
+                    <li><a href="doctors.html">Doctors</a></li>
+                    <li><a href="contactus.html">Contact Us</a></li>
+                </ul>
+            </nav>
+
+            <a href="login.php" target="_blank" class="login-btn">Login</a>
+        </div>
+    </header>
+
+
+    <!-- Welcome Section -->
+    <section class="welcome-section">
+        <h2 class="fade-element">In Medicare Plus</h2>
+        <h1 class="fade-element">Your Health, <br> Our Expertise.</h1>
+        <a href="login.php" target="_blank" class="hero-btn fade-element">Book Appointment</a>
+    </section>
+
+    <!-- Services Verse Section -->
+    <section class="verse-section">
+        <h1 class="verse fade-element" style="color: #008080;">
+            Comprehensive Medical Services Under One Roof
+        </h1>
+
+        <h1 class="second-line verse fade-element" style="color: #ffffff;">
+            Access quality care across a range of specialties without ever needing to go far.
+        </h1>
+
+    </section>
+
+    <section class="departments">
+        <h2>Our Departments</h2>
+        <div class="dept-grid">
+            <div class="dept-card">
+                <i class="fas fa-heartbeat"></i>
+                <h3>Cardiology</h3>
+                <p>Keeping hearts healthy, one beat at a time.</p>
+                <a href="cardiology.html" target="_blank" class="dept-btn">See More</a>
+
+            </div>
+            <div class="dept-card">
+                <i class="fas fa-file-medical-alt"></i>
+                <h3>Neurology</h3>
+                <p>Caring for the command center of your body.</p>
+                <a href="neurology.html" target="_blank" class="dept-btn">See More</a>
+            </div>
+            <div class="dept-card">
+                <i class="fas fa-user-md"></i>
+                <h3>Pediatrics</h3>
+                <p>Gentle care for little hearts and big smiles.</p>
+                <a href="pediatrics.html" target="_blank" class="dept-btn">See More</a>
+            </div>
+            <div class="dept-card">
+                <i class="fas fa-ambulance"></i>
+                <h3>Orthopedics</h3>
+                <p>Restoring movement, rebuilding strength.</p>
+                <a href="orthopedics.html" target="_blank" class="dept-btn">See More</a>
+            </div>
+            <div class="dept-card">
+                <i class="fas fa-ambulance"></i>
+                <h3>Gynecology & Obstetrics</h3>
+                <p>Supporting women through every stage of life.</p>
+                <a href="gynocology.html" target="_blank" class="dept-btn">See More</a>
+            </div>
+            <div class="dept-card">
+                <i class="fas fa-ambulance"></i>
+                <h3>Dermatology</h3>
+                <p>Healthy skin, healthy confidence.</p>
+                <a href="dermatology.html" target="_blank" class="dept-btn">See More</a>
+            </div>
+            <div class="dept-card">
+                <i class="fas fa-ambulance"></i>
+                <h3>Dentistry</h3>
+                <p>Bright smiles begin here.</p>
+                <a href="dentistry.html" target="_blank" class="dept-btn">See More</a>
+            </div>
+            <div class="dept-card">
+                <i class="fas fa-ambulance"></i>
+                <h3>Emergency & Trauma Care</h3>
+                <p>Here for you. Every second counts.</p>
+                <a href="emergency.html" target="_blank" class="dept-btn">See More</a>
+            </div>
+            <div class="dept-card">
+                <i class="fas fa-ambulance"></i>
+                <h3>Physiotheraphy</h3>
+                <p>Helping you move forward.</p>
+                <a href="physiotherapy.html" target="_blank" class="dept-btn">See More</a>
+            </div>
+
+
+        </div>
+    </section>
+
+
+    <section class="contact-doctor-section">
+        <div class="overlay"></div>
+        <div class="contact-content">
+            <h2>Need to Consult a Doctor?</h2>
+            <p>Your health matters. Book your appointment with our specialists today.</p>
+            <a href="login.php" class="contact-btn">Book Appointment</a>
+        </div>
+    </section>
+
+<footer class="footer">
+  <div class="footer-container">
+    
+    <div class="footer-section about">
+      <h2>Medicare Plus</h2>
+      <p>Your trusted partner in health. We provide advanced medical care, friendly service, and expert doctors.</p>
+    </div>
+
+    <div class="footer-section links">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="medicare_homepage.php">Home</a></li>
+        <li><a href="aboutus.html">About Us</a></li>
+        <li><a href="department.html">Departments</a></li>        
+        <li><a href="doctors.html">Doctors</a></li>
+        <li><a href="contactus.html">Contact Us</a></li>
+        
+        
+      </ul>
+    </div>
+
+    <div class="footer-section contact">
+      <h3>Contact Info</h3>
+      <p><strong>Phone:</strong> +94 71 234 5678</p>
+      <p><strong>Email:</strong> info@medicareplus.com</p>
+      <p><strong>Address:</strong> No. 07, Main Street, Colombo</p>
+    </div>
+
+
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2025 Medicare Plus. All Rights Reserved.</p>
+  </div>
+</footer>
+
+
+
+    <script>
+
+
+        /* ---------------------------------------
+           INFO BOXES FADE-IN (3 cards)
+        ---------------------------------------- */
+        const fadeBoxes = document.querySelectorAll('.fade-box');
+
+        function fadeBoxesScroll() {
+            const triggerBottom = window.innerHeight * 0.85;
+
+            fadeBoxes.forEach((box, index) => {
+                const top = box.getBoundingClientRect().top;
+
+                if (top < triggerBottom) {
+                    setTimeout(() => box.classList.add('show'), index * 300);
+                } else {
+                    box.classList.remove('show');
+                }
+            });
+        }
+
+        /* ---------------------------------------
+           RECTANGLE POP-IN (right side)
+        ---------------------------------------- */
+        const rectangle = document.querySelector('.rectangle');
+
+        function rectangleScroll() {
+            const top = rectangle.getBoundingClientRect().top;
+
+            if (top < window.innerHeight - 100) {
+                rectangle.classList.add('active');
+            }
+        }
+
+        /* ---------------------------------------
+           RUN ALL ANIMATIONS
+        ---------------------------------------- */
+        function runAnimations() {
+            fadeElementsScroll();
+            fadeBoxesScroll();
+            rectangleScroll();
+        }
+
+        window.addEventListener('scroll', runAnimations);
+        window.addEventListener('load', runAnimations);
+
+        function rectangleScroll() {
+            const rectTop = rectangle.getBoundingClientRect().top;
+            const triggerBottom = window.innerHeight * 0.85;
+
+            if (rectTop < triggerBottom) {
+                rectangle.classList.add('active');
+            } else {
+                rectangle.classList.remove('active'); // allows re-trigger
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            // Select both stat and department cards
+            const cards = document.querySelectorAll(".stat-card, .dept-card");
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("show");
+                    } else {
+                        entry.target.classList.remove("show"); // optional fade-out when leaving
+                    }
+                });
+            }, { threshold: 0.2 }); // triggers when 20% of element is visible
+
+            cards.forEach(card => observer.observe(card));
+        });
+
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const elements = document.querySelectorAll(".fade-element");
+
+            const options = {
+                threshold: 0.2 // triggers when 20% of the element is visible
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => { //verse section fade in and out
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("fade-in-active");
+                    } else {
+                        entry.target.classList.remove("fade-in-active");
+                        /* remove class so animation can replay */
+                    }
+                });
+            }, options);
+
+            elements.forEach(el => observer.observe(el));
+        });
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const section = document.querySelector(".contact-doctor-section");
+            const text = document.querySelector(".contact-content");
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        section.classList.add("active");
+                        text.classList.add("active");
+                    } else {
+                        section.classList.remove("active");
+                        text.classList.remove("active");
+                    }
+                });
+            }, { threshold: 0.3 });
+
+            observer.observe(section);
+        });
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const deptHeading = document.querySelector(".departments h2");
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        deptHeading.classList.add("slide-in");
+                    } else {
+                        deptHeading.classList.remove("slide-in"); // allows re-trigger when scrolling away and back
+                    }
+                });
+            }, { threshold: 0.2 }); // triggers when 20% visible
+
+            observer.observe(deptHeading);
+        });
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>
